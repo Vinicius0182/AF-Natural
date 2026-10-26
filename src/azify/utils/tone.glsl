@@ -15,12 +15,13 @@ float gray(vec3 x) {
 #if TONE_MAPPING_MODE == 1
 /* Simple Tone Mapping */
 vec3 AzifyColors(vec3 x) {
-	x = mix(x, vec3(gray(x)), 0.1);
+	// Saturation target: 0.60 (60% of original chroma)
+	x = mix(vec3(gray(x)), x, 0.60);
 	const float
-	a = 5.55, // 5.0
-	b = 0.03, // 0.3
-	c = 3.60,
-	d = 0.40,
+	a = 5.25, // natural highlight rolloff
+	b = 0.045, // lifted shadows
+	c = 3.35,
+	d = 0.42,
 	e = 0.50;
 	return str((x*(a*x+b))/(x*(c*x+d)+e));
 }

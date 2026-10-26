@@ -141,10 +141,15 @@ void main() {
 	// New Fog
 	#ifdef FOG
 	vec3 UnDerWFog = mix(FOG_UNDERW_DAY, FOG_UNDERW_NIGHT, v_wtime.z);
-	vec3 targetcol = mix(v_skyMie, UnDerWFog, v_unwater);
-	diffuse.rgb = mix(diffuse.rgb, targetcol, v_fog.a);
-	diffuse.rgb = mix(diffuse.rgb, v_skyMie,
-	clamp(length(v_wpos.xz*0.003),0.0,0.5)*inv(v_unwater));
+	// Cinematic atmospheric haze: cool sky-derived distance fog, slightly desaturated.
+	vec3 cinematicFog = mix(v_skyMie, vec3(0.56, 0.62, 0.68), 0.18);
+	vec3 targetcol = mix(cinematicFog, UnDerWFog, v_unwater);
+	// Strengthen existing engine fog without replacing its distance calculation.
+	float cinematicFogAmount = clamp(v_fog.a * 1.28, 0.0, 1.0);
+	diffuse.rgb = mix(diffuse.rgb, targetcol, cinematicFogAmount);
+	// Extra long-distance atmospheric perspective; kept subtle near the player.
+	float distanceHaze = clamp(length(v_wpos.xz * 0.003) * 0.68, 0.0, 0.62) * inv(v_unwater);
+	diffuse.rgb = mix(diffuse.rgb, cinematicFog, distanceHaze);
 	#endif 
 
 	// Underwater ray effect

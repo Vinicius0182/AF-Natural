@@ -10,6 +10,11 @@ Supports Android, iOS, and Windows
 
 &nbsp;
 &nbsp;
+
+## Custom build: Realism Max (community edit)
+
+This source copy has a realism-focused tuning pass: more cloud sampling, more restrained glow and waterline effects, slightly stronger material normal/reflection response, natural daylight/sky/torch colors, and gentler highlight tone mapping. It intentionally does not target performance optimization. The build still needs the repository's shader compiler/material dependencies and should be tested in the intended Minecraft Bedrock + RenderDragon loader; this source archive is not itself a compiled `.mcpack`.
+
 ## Installation
 > [!NOTE]
 > Shaders are not officially supported on Minecraft Bedrock. The following are unofficial ways to load shaders.
@@ -84,3 +89,10 @@ Compiled material.bin files will be inside `build/<platform>/`
 
 > **[v1.0 - WINDOWS](https://example.com)**
 
+
+
+## Realismo Máximo — personalização
+
+Esta variante aplica saturação de 0,60 no tone mapping, sombras direcionais mais escuras, luz solar diurna mais quente, halo solar mais amplo e neblina atmosférica cinematográfica mais forte. O tamanho geométrico/comprimento real das sombras ainda depende das capacidades e configurações de sombras do RenderDragon/engine; estes ajustes alteram sobretudo a tonalidade e o contraste das áreas sombreadas.
+
+**Nota:** este arquivo é o código-fonte; precisa ser compilado com as dependências indicadas pelo projeto antes de ser instalado como pack. A compatibilidade visual deve ser validada no Minecraft Bedrock/RenderDragon no dispositivo-alvo.

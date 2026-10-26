@@ -13,10 +13,10 @@ void main() {
   color.rgb *= SunMoonColor.rgb;
   vec4 wtime = getTime();
 
-	vec3 SunColorCC = mix(vec3(1.0, 0.76, 0.2) + 0.01, vec3(0.8, 1.0, 1.2), wtime.z);
+	vec3 SunColorCC = mix(vec3(1.0, 0.68, 0.30), vec3(0.78, 0.86, 1.0), wtime.z);
 	vec2 scale = v_pos.xz * mix(1.5, 1.7, wtime.z);
 	vec3 albedo2 = SunColorCC * smoothstep(0.7, 0.9, 1.0 - length(v_pos.xz * 4.0));
-	albedo2 += exp(-length(scale)) * SunColorCC * mix(mix(0.2, 0.3, wtime.y), 0.3, wtime.z);
+	albedo2 += exp(-length(scale) * 0.82) * SunColorCC * mix(mix(0.30, 0.42, wtime.y), 0.24, wtime.z);
 	
 	color = SunMoonColor * texture2D(s_SunMoonTexture, v_texcoord0);
 	color.xyz = (FogAndDistanceControl.x <= 0.0) ? albedo2 : albedo2;

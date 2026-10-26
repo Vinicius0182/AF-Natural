@@ -1,6 +1,7 @@
 #ifndef SHADER_INPUTS
 #define SHADER_INPUTS
 #define AzifyNaturalv1.0
+#define AZIFYNATURAL_REALISM_MAX_CUSTOM
 
 /*
 Please Read Instructions Below!
@@ -24,32 +25,32 @@ Please Read Instructions Below!
 #define TONE_MAPPING_MODE 1 // [1]Simple [2]Vintage
 
 /* Adjustable Variables */
-#define CLOUD_STEPS          5
-#define wNORMAL_INTENSITY    0.0009
-#define WATER_OPACITY        0.2
-#define WATERGRAD_OPACITY    0.9
-#define WATERGRAD_SMOOTHNESS 0.38
-#define WATERLINE_INTENSITY  0.675
-#define WATERLINE_OPACITY    0.21
-#define GLOW_BRIGHTNESS      0.8
+#define CLOUD_STEPS          10
+#define wNORMAL_INTENSITY    0.0012
+#define WATER_OPACITY        0.16
+#define WATERGRAD_OPACITY    0.82
+#define WATERGRAD_SMOOTHNESS 0.46
+#define WATERLINE_INTENSITY  0.52
+#define WATERLINE_OPACITY    0.16
+#define GLOW_BRIGHTNESS      0.72
 /* NormalMaps */
-#define METALLIC_BEVEL 0.00028
-#define METALLIC_STREN 1.5
-#define WATER_BEVEL    0.00045
-#define WATER_STREN    3.0
+#define METALLIC_BEVEL 0.00034
+#define METALLIC_STREN 1.7
+#define WATER_BEVEL    0.00055
+#define WATER_STREN    3.4
 
 /* Overworld Colors */
-#define DAYc      vec3(0.76,0.84,0.88)
-#define DUSKc     vec3(0.55,0.52,0.5)
-#define NIGHTc    vec3(0.45,0.45,0.5)
+#define DAYc      vec3(0.78,0.83,0.86)
+#define DUSKc     vec3(0.62,0.48,0.40)
+#define NIGHTc    vec3(0.32,0.36,0.46)
 #define D_RAINc   vec3(0.58,0.58,0.58)
 #define N_RAINc   vec3(0.35,0.38,0.4)
-#define CAVEc     vec3(0.16,0.21,0.26)
+#define CAVEc     vec3(0.12,0.14,0.17)
 #define UNWATERc  vec3(0.7,0.8,0.9)* 0.3
 #define NETHERc   vec3(0.5,0.45,0.4)* 0.5
 
 /* Torch Color */
-#define TORCH_D  vec3(0.65,0.6,0.6)
+#define TORCH_D  vec3(0.78,0.57,0.39)
 
 /* Entity Colors
 -- seperated color for more control! */
@@ -64,14 +65,14 @@ Please Read Instructions Below!
  mDL - Highlight
  mDS - Shadow
  Overworld Dirlight Colors */
-#define mDL_DAYc   vec3(1.0,0.9,0.8)
-#define mDL_DUSKc  vec3(1.0,0.8,0.7)
-#define mDL_NIGHTc vec3(0.74,0.74,0.8)
+#define mDL_DAYc   vec3(1.0,0.82,0.64)
+#define mDL_DUSKc  vec3(1.0,0.63,0.40)
+#define mDL_NIGHTc vec3(0.62,0.68,0.82)
 #define mDL_RAINc  vec3(1.0,1.0,1.0)
-#define mDS_DAYc   vec3(0.44,0.48,0.49)
-#define mDS_DUSKc  vec3(0.6,0.55,0.5)
-#define mDS_NIGHTc vec3(0.6,0.6,0.7)
-#define mDS_RAINc  vec3(0.7,0.7,0.7)
+#define mDS_DAYc   vec3(0.22,0.25,0.30)
+#define mDS_DUSKc  vec3(0.31,0.25,0.22)
+#define mDS_NIGHTc vec3(0.30,0.32,0.42)
+#define mDS_RAINc  vec3(0.43,0.45,0.48)
 
 
 /* Water Lines Colors */
@@ -91,17 +92,17 @@ Please Read Instructions Below!
 SA - Upper Color
 SB - Middle Color
 SC - Below */
-#define SA_DAY     vec3(0.14,0.35,0.5)
+#define SA_DAY     vec3(0.16,0.29,0.42)
 #define SA_DUSK    vec3(0.2,0.23,0.4)
 #define SA_NIGHT   vec3(0.15,0.2,0.35)
 #define SA_RAIN_D  vec3(0.45,0.45,0.45)
 #define SA_RAIN_N  vec3(0.45,0.45,0.45)
-#define SB_DAY     vec3(0.75,0.8,0.7)
+#define SB_DAY     vec3(0.72,0.76,0.79)
 #define SB_DUSK    vec3(1.0,0.6,0.33)
 #define SB_NIGHT   vec3(0.45,0.28,0.65)
 #define SB_RAIN_D  vec3(0.6,0.6,0.6)
 #define SB_RAIN_N  vec3(0.5,0.5,0.5)
-#define SC_DAY     vec3(0.35,0.4,0.5)
+#define SC_DAY     vec3(0.48,0.52,0.55)
 #define SC_DUSK    vec3(0.6,0.4,0.3)
 #define SC_NIGHT   vec3(0.1,0.2,0.4)
 #define SC_RAIN_D  vec3(0.3,0.3,0.3)
@@ -122,9 +123,9 @@ SC - Below */
 #define CLOUD_NIGHTc    vec3(0.6,0.61,0.63)
 #define CLOUD_D_RAINc   vec3(0.6,0.6,0.6)
 #define CLOUD_N_RAINc   vec3(0.49,0.5,0.5)
-#define SHADOW_DAYc     vec3(0.27,0.38,0.48)
-#define SHADOW_DUSKc    vec3(0.5,0.3,0.25)* 0.7
-#define SHADOW_NIGHTc   vec3(0.1,0.13,0.4)*0.8
+#define SHADOW_DAYc     vec3(0.16,0.22,0.29)
+#define SHADOW_DUSKc    vec3(0.34,0.20,0.17)* 0.72
+#define SHADOW_NIGHTc   vec3(0.08,0.10,0.24)*0.85
 #define SHADOW_D_RAINc  vec3(0.295,0.3,0.3)
 #define SHADOW_N_RAINc  vec3(0.195,0.2,0.2)
 
